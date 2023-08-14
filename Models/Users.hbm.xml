@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="WindowsformsHibernateSql"
+                   namespace="WindowsformsHibernateSql.Models">
+
+  <class name="Users">
+    <id name="Id" column="Id">
+      <generator class="identity" />
+    </id>
+    <property name="ProfileId" />
+    <property name="UserImageId" />
+    <property name="Username" />
+    <property name="PrimaryEmail" />
+    <property name="SecondaryEmail" />
+    <property name="Password" />
+    <property name="TempPassword" />
+    <property name="StatusId" />
+    <property name="LastLogin" type="datetime"/>
+    <property name="DateCreated" type="datetime"/>
+    <property name="DateUpdated" type="datetime"/>
+    <property name="CreatedBy" />
+    <property name="UpdatedBy" />
+  </class>
+
+</hibernate-mapping>

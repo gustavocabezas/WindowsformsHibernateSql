@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="WindowsformsHibernateSql"
+                   namespace="WindowsformsHibernateSql.Models">
+
+  <class name="UserImages">
+    <id name="Id" column="Id">
+      <generator class="identity" />
+    </id>
+    <property name="UserId" />
+    <property name="ImageTypeId" />
+    <property name="ImageData" type="BinaryBlob"/>
+    <property name="ImagePath" />
+    <property name="Metadata" />
+    <property name="Active" />
+    <property name="DateCreated" type="datetime"/>
+    <property name="DateUpdated" type="datetime"/>
+    <property name="CreatedBy" />
+    <property name="UpdatedBy" />
+  </class>
+
+</hibernate-mapping>
