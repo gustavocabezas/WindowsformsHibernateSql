@@ -51,6 +51,8 @@
 
                         <li class="nav-item" id="navLinkAccount" runat="server" visible="false"><a class="nav-link" runat="server" href="~/Views/Account">Account</a></li>
 
+                        <li class="nav-item" id="navLinkUsers" runat="server" visible="false"><a class="nav-link" runat="server" href="~/Views/Users">Users</a></li>
+
                         <%--<li class="nav-item"  id="navLinkItem" runat="server" visible="false"><a class="nav-link" runat="server" href="~/Views/Item">Item</a></li>--%>
 
                         <%--<li class="nav-item"  id="navLinkItem" runat="server" visible="false"><a class="nav-link" runat="server" href="~/Views/MyItems">My Items</a></li>--%>

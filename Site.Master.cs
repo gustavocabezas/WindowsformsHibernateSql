@@ -16,7 +16,8 @@ namespace WindowsformsHibernateSql
                 {
                     /* Response.Redirect("~/Views/Login.aspx");*/
                     navLinkAccount.Visible = isAuthenticated;
-                    /*navLinkItem.Visible = isAuthenticated;*/ 
+                    navLinkUsers.Visible = isAuthenticated;
+                    /*navLinkItem.Visible = isAuthenticated;*/
                 }
                 else
                 {
