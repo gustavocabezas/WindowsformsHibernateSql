@@ -49,6 +49,7 @@ namespace WindowsformsHibernateSql
                         Models.Persons newPerson = new Models.Persons
                         {
                             UserId = newUser.Id,
+                            Identification = TextBoxIdentification.Text,
                             DateCreated = DateTime.Now,
                             CreatedBy = newUser.Id
                         };

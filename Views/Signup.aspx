@@ -11,6 +11,11 @@
                 </div>
 
                 <div class="form-group mb-3">
+                    <label for="identification" class="form-label">Identification</label>
+                    <asp:TextBox ID="TextBoxIdentification" type="number" class="form-control" aria-describedby="Identification" runat="server"></asp:TextBox>
+                </div>
+
+                <div class="form-group mb-3">
                     <label for="TextBoxPassword" class="form-label">Password</label>
                     <asp:TextBox ID="TextBoxPassword" type="password" class="form-control" runat="server"></asp:TextBox>
                 </div>

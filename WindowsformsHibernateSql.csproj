@@ -162,6 +162,10 @@
     <EmbeddedResource Include="Models\Persons.hbm.xml" />
     <EmbeddedResource Include="Models\Users.hbm.xml" />
     <EmbeddedResource Include="Models\UserImages.hbm.xml" />
+    <EmbeddedResource Include="Models\Jobs.hbm.xml" />
+    <EmbeddedResource Include="Models\JobsCandidates.hbm.xml" />
+    <EmbeddedResource Include="Models\Candidates.hbm.xml" />
+    <EmbeddedResource Include="Models\Employers.hbm.xml" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -175,6 +179,7 @@
     <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
     <Content Include="Views\Item.aspx" />
     <Content Include="Views\Account.aspx" />
+    <Content Include="Views\JobTracking.aspx" />
     <Content Include="Views\Signup.aspx" />
     <Content Include="Views\UserDetails.aspx" />
     <Content Include="Views\Login.aspx" />
@@ -216,8 +221,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\Utils.cs" />
+    <Compile Include="Models\Employers.cs" />
+    <Compile Include="Models\Candidates.cs" />
+    <Compile Include="Models\JobsCandidates.cs" />
     <Compile Include="Models\UserImages.cs" />
     <Compile Include="Models\Persons.cs" />
+    <Compile Include="Models\Jobs.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Views\Item.aspx.cs">
       <DependentUpon>Item.aspx</DependentUpon>
@@ -232,6 +241,13 @@
     </Compile>
     <Compile Include="Views\Account.aspx.designer.cs">
       <DependentUpon>Account.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\JobTracking.aspx.cs">
+      <DependentUpon>JobTracking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\JobTracking.aspx.designer.cs">
+      <DependentUpon>JobTracking.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Signup.aspx.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
