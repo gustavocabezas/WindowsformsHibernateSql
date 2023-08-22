@@ -179,6 +179,7 @@
     <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
     <Content Include="Views\Item.aspx" />
     <Content Include="Views\Account.aspx" />
+    <Content Include="Views\JobTrackingDetails.aspx" />
     <Content Include="Views\JobTracking.aspx" />
     <Content Include="Views\Signup.aspx" />
     <Content Include="Views\UserDetails.aspx" />
@@ -223,7 +224,9 @@
     <Compile Include="Helpers\Utils.cs" />
     <Compile Include="Models\Employers.cs" />
     <Compile Include="Models\Candidates.cs" />
+    <Compile Include="Models\JobTrackingDetails.cs" />
     <Compile Include="Models\JobsCandidates.cs" />
+    <Compile Include="Models\JobViewModel.cs" />
     <Compile Include="Models\UserImages.cs" />
     <Compile Include="Models\Persons.cs" />
     <Compile Include="Models\Jobs.cs" />
@@ -241,6 +244,13 @@
     </Compile>
     <Compile Include="Views\Account.aspx.designer.cs">
       <DependentUpon>Account.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\JobTrackingDetails.aspx.cs">
+      <DependentUpon>JobTrackingDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\JobTrackingDetails.aspx.designer.cs">
+      <DependentUpon>JobTrackingDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\JobTracking.aspx.cs">
       <DependentUpon>JobTracking.aspx</DependentUpon>

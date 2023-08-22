@@ -7,34 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+namespace WindowsformsHibernateSql
+{
 
 
-public partial class  {
+    public partial class JobTrackingDetails
+    {
 
-    /// <summary>
-    /// TextBoxTitle control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox TextBoxTitle;
-
-/// <summary>
-/// TextBoxDescription control.
-/// </summary>
-/// <remarks>
-/// Auto-generated field.
-/// To modify move field declaration from designer file to code-behind file.
-/// </remarks>
-protected global::System.Web.UI.WebControls.TextBox TextBoxDescription;
-
-/// <summary>
-/// JobsGridView control.
-/// </summary>
-/// <remarks>
-/// Auto-generated field.
-/// To modify move field declaration from designer file to code-behind file.
-/// </remarks>
-protected global::System.Web.UI.WebControls.GridView JobsGridView;
+        /// <summary>
+        /// JobsGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView JobsGridView;
+    }
 }

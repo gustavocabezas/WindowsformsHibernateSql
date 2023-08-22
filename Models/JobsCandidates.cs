@@ -7,7 +7,7 @@ namespace WindowsformsHibernateSql.Models
         public virtual int Id { get; set; }
         public virtual int JobId { get; set; }
         public virtual int CandidateId { get; set; }
-        public virtual int CandidateDocumentId { get; set; }
+        public virtual String CandidateDocumentId { get; set; }
         public virtual DateTime? DateCreated { get; set; }
         public virtual DateTime? DateUpdated { get; set; }
         public virtual int CreatedBy { get; set; }

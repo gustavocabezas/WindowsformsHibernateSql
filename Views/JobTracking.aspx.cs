@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.ServiceModel.Channels;
 using System.Threading.Tasks;
 using System.Web.UI;
@@ -8,6 +9,7 @@ using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using NHibernate;
 using NHibernate.Cfg;
+using WindowsformsHibernateSql.Models;
 
 namespace WindowsformsHibernateSql
 {
@@ -39,7 +41,24 @@ namespace WindowsformsHibernateSql
                 using (mySession.BeginTransaction())
                 {
                     ICriteria criteria = mySession.CreateCriteria<Models.Jobs>();
-                    IList<Models.Jobs> list = criteria.List<Models.Jobs>();
+                    IList<Models.Jobs> jobs = criteria.List<Models.Jobs>();
+
+                    List<JobViewModel> list = jobs.Select(job => new JobViewModel
+                    {
+                        Id = job.Id,
+                        Title = job.Title,
+                        Description = job.Description
+                    }).ToList();
+
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        long countLong = mySession.CreateQuery("Select Count(*) from JobsCandidates Where JobId = :jobId")
+                                      .SetParameter("jobId", list[i].Id)
+                                      .UniqueResult<long>();
+
+                        list[i].NumberCandidates = (int)countLong;
+                    }
+
                     JobsGridView.DataSource = list;
                     JobsGridView.DataBind();
                 }
@@ -53,7 +72,7 @@ namespace WindowsformsHibernateSql
                 System.Web.UI.WebControls.Button detailsButton = (System.Web.UI.WebControls.Button)e.Row.FindControl("DetailsButton");
                 string id = JobsGridView.DataKeys[e.Row.RowIndex].Value.ToString();
 
-                detailsButton.PostBackUrl = $"UserDetails.aspx?id={id}";
+                detailsButton.PostBackUrl = $"JobTrackingDetails.aspx?id={id}";
             }
         }
 

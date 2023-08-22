@@ -12,6 +12,7 @@
                         <asp:BoundField DataField="Id" HeaderText="ID" />
                         <asp:BoundField DataField="Title" HeaderText="Title" />
                         <asp:BoundField DataField="Description" HeaderText="Description" /> 
+                          <asp:BoundField DataField="NumberCandidates" HeaderText="NumberCandidates" /> 
                         <asp:TemplateField HeaderText="Actions">
                             <ItemTemplate>
                                 <asp:Button ID="DetailsButton" runat="server" Text="Details" CommandName="Details" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-primary" />

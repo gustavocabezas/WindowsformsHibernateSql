@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.ServiceModel.Channels;
 using System.Threading.Tasks;
 using System.Web.UI;
@@ -9,8 +10,6 @@ using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using NHibernate;
 using NHibernate.Cfg;
-using NHibernate.Mapping;
-using static System.Collections.Specialized.BitVector32;
 
 namespace WindowsformsHibernateSql
 {
@@ -38,26 +37,61 @@ namespace WindowsformsHibernateSql
         {
             if (Session["Authentication"] != null)
             {
-                int jobId = 1;
+                int jobId;
+
+                if (int.TryParse(Request.QueryString["id"], out jobId))
+                {
+                }
+                else
+                {
+                }
+
                 using (mySession.BeginTransaction())
                 {
-                    String hql = "SELECT new map(c.CandidateName as CandidateName, jc.ApplicationDate as ApplicationDate, j.JobTitle as JobTitle, cd.CurriculumPath as CurriculumPath, cd.PresentationLetterPath as PresentationLetterPath) FROM JobsCandidates jc JOIN jc.Candidate c JOIN jc.Job j JOIN jc.CandidateDocument cd WHERE j.JobId = :jobId";
+                    String hql = @"SELECT new map(u.Username as CandidateName, 
+                              jc.DateCreated as ApplicationDate, 
+                              j.Title as JobTitle, 
+                              jc.CandidateDocumentId as CandidateDocumentId) 
+                           FROM JobsCandidates jc, Users u, Jobs j 
+                           WHERE jc.CandidateId = u.Id 
+                           AND jc.JobId = j.Id 
+                           AND j.Id = :jobId";
+
+
+                    IList<Models.JobTrackingDetails> ConvertToJobsDetailsList(IList hashtables)
+                    {
+                        var jobsDetailsList = new List<Models.JobTrackingDetails>();
+
+                        foreach (Hashtable hashtable in hashtables)
+                        {
+                            var jobDetails = new Models.JobTrackingDetails
+                            {
+                                CandidateName = hashtable["CandidateName"]?.ToString(),
+                                ApplicationDate = DateTime.Parse(hashtable["ApplicationDate"]?.ToString() ?? DateTime.Now.ToString()),
+                                JobTitle = hashtable["JobTitle"]?.ToString(),
+                                CandidateDocumentId = hashtable["CandidateDocumentId"]?.ToString()
+                            };
+
+                            jobsDetailsList.Add(jobDetails);
+                        }
+
+                        return jobsDetailsList;
+                    }
 
                     IList result = mySession.CreateQuery(hql).SetParameter("jobId", jobId).List();
-                    JobsGridView.DataSource = result;
-                    JobsGridView.DataBind();
+                     
+                    IList<Models.JobTrackingDetails> JobTrackingDetailsList = ConvertToJobsDetailsList(result);
+
+                    try
+                    {
+                        JobsGridView.DataSource = JobTrackingDetailsList;
+                        JobsGridView.DataBind();
+                    }
+                    catch (Exception ex)
+                    {
+                        Response.Write(ex.Message);
+                    }
                 }
-            }
-        }
-
-        protected void JobsGridView_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                System.Web.UI.WebControls.Button detailsButton = (System.Web.UI.WebControls.Button)e.Row.FindControl("DetailsButton");
-                string id = JobsGridView.DataKeys[e.Row.RowIndex].Value.ToString();
-
-                detailsButton.PostBackUrl = $"UserDetails.aspx?id={id}";
             }
         }
 
